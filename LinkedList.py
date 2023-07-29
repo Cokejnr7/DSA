@@ -7,6 +7,9 @@ class Node:
         self.data = data
         self.next_node = None
         
+    def __repr__(self) -> str:
+        return str(self.data)
+        
         
 
 class LinkedList:
@@ -37,23 +40,48 @@ class LinkedList:
             
         else:
             self.insert_node(self.head,new_node)
-            # node = self.head
-            
-            # while node.next_node:
-            #     node = node.next_node
-                
-            # node.next_node = new_node
             
     def insert_node(self,node,actual_node):
         
         if node.next_node:
-            self.insert_node(node.next_node)
+            self.insert_node(node.next_node,actual_node)
             
         else:
             node.next_node = actual_node
             
     
-    # def traverse(self):
+    def traverse(self):
         
-    #     if self.head is None:
+        if self.head is None:
+            return
+        
+        self.traverse_node(self.head)
+        
+        
+    def traverse_node(self,node):
+        print(node)
+        if node.next_node:
+            self.traverse_node(node.next_node)
+            
+            
+    def remove(self,data):
+        
+        if self.head is None:
+            return
+        
+        actual_node = self.head
+        previous_node = None
+          
+        
+            
+            
+            
+            
+if __name__ == '__main__':
+    linked_list = LinkedList()
+    
+    for i in range(11):
+        linked_list.insert_start(i)
+        
+    linked_list.traverse()
             
